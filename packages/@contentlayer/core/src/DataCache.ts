@@ -5,7 +5,7 @@ import type { E } from '@contentlayer/utils/effect'
 import { OT, pipe, T } from '@contentlayer/utils/effect'
 import type { GetContentlayerVersionError } from '@contentlayer/utils/node'
 
-import { ArtifactsDir } from './ArtifactsDir.js'
+import { getCacheDirPath, mkdirCache } from './ArtifactsDir.js'
 import type { HasCwd } from './cwd.js'
 import type { Document } from './data-types.js'
 
@@ -44,7 +44,7 @@ export namespace DataCache {
   > =>
     pipe(
       T.gen(function* ($) {
-        const cacheDirPath = yield* $(ArtifactsDir.getCacheDirPath)
+        const cacheDirPath = yield* $(getCacheDirPath)
         const filePath = path.join(cacheDirPath, dataCacheFileName(schemaHash))
 
         yield* $(OT.addAttribute('filePath', filePath))
@@ -68,7 +68,7 @@ export namespace DataCache {
   > =>
     pipe(
       T.gen(function* ($) {
-        const cacheDirPath = yield* $(ArtifactsDir.mkdirCache)
+        const cacheDirPath = yield* $(mkdirCache)
 
         const filePath = path.join(cacheDirPath, dataCacheFileName(schemaHash))
         yield* $(OT.addAttribute('filePath', filePath))

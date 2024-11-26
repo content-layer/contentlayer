@@ -10,7 +10,7 @@ import type { HasCwd } from '../cwd.js'
 import { getCwd } from '../cwd.js'
 import type { EsbuildBinNotFoundError } from '../errors.js'
 import { ConfigNoDefaultExportError, ConfigReadError, NoConfigFoundError } from '../errors.js'
-import { ArtifactsDir } from '../index.js'
+import { mkdirCache } from '../index.js'
 import type { SourcePlugin } from '../plugin.js'
 import * as esbuild from './esbuild.js'
 
@@ -114,7 +114,7 @@ const resolveConfigPath = ({
   })
 
 const makeTmpDirAndResolveEntryPoint = pipe(
-  ArtifactsDir.mkdirCache,
+  mkdirCache,
   T.map((cacheDir) => path.join(cacheDir, 'compiled-contentlayer-config.mjs')),
 )
 
@@ -186,7 +186,14 @@ const getConfigFromResult = ({
       )
 
       if (!('default' in exports)) {
-        return yield* $(T.fail(new ConfigNoDefaultExportError({ configPath, availableExports: Object.keys(exports) })))
+        return yield* $(
+          T.fail(
+            new ConfigNoDefaultExportError({
+              configPath,
+              availableExports: Object.keys(exports),
+            }),
+          ),
+        )
       }
 
       // Note currently `makeSource` returns a Promise but we should reconsider that design decision
