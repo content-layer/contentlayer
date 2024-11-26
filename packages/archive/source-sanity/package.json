@@ -13,15 +13,15 @@
     "test": "echo No tests yet"
   },
   "devDependencies": {
-    "@types/node": "^17.0.45"
+    "@types/node": "^22.10.0"
   },
   "dependencies": {
     "@contentlayer/core": "workspace:*",
     "@contentlayer/utils": "workspace:*",
-    "@sanity/client": "^2.10.5",
-    "@sanity/core": "^2.10.5",
-    "@sanity/image-url": "^0.140.22",
-    "@sanity/schema": "^2.10.0",
-    "rxjs": "^7.1.0"
+    "@sanity/client": "^6.22.5",
+    "@sanity/core": "^2.36.2",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/schema": "^3.65.0",
+    "rxjs": "^7.8.1"
   }
 }

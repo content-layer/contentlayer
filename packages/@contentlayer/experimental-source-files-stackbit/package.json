@@ -29,11 +29,11 @@
     "@contentlayer/core": "workspace:*",
     "@contentlayer/source-files": "workspace:*",
     "@contentlayer/utils": "workspace:*",
-    "@stackbit/sdk": "~0.3.25"
+    "@stackbit/sdk": "~2.1.11"
   },
   "devDependencies": {
-    "vite": "^4.3.1",
-    "vitest": "0.30.1"
+    "vite": "^6.0.0",
+    "vitest": "2.1.6"
   },
   "license": "MIT"
 }

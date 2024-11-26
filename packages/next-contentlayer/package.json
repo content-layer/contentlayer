@@ -48,20 +48,20 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "next": "^13.4.7",
-    "typescript": "^5.1.6",
-    "webpack": "^5.88.1"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "next": "^15.0.3",
+    "typescript": "^5.7.2",
+    "webpack": "^5.96.1"
   },
   "author": "schickling",
-  "homepage": "https://github.com/contentlayerdev/contentlayer",
+  "homepage": "https://github.com/content-layer/contentlayer",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentlayerdev/contentlayer.git"
+    "url": "git+https://github.com/content-layer/contentlayer.git"
   },
   "bug": {
-    "url": "https://github.com/contentlayerdev/contentlayer/issues"
+    "url": "https://github.com/content-layer/contentlayer/issues"
   }
 }

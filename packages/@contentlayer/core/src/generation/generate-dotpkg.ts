@@ -362,7 +362,7 @@ export { default as ${dataVariableName} } from './${idToFileName(documentId)}.js
       idToFileName,
       (_) => camelCase(_, { stripRegexp: /[^A-Z0-9\_]/gi }),
       // NOTE to support file names with different alphabets, we'll fall back (e.g. to `Docname2`)
-      // See https://github.com/contentlayerdev/contentlayer/issues/337
+      // See https://github.com/content-layer/contentlayer/issues/337
       (_) => (isValidJsVarName(_) && usedVariableNames.has(_) === false ? _ : `${docDef.name}${fileIndex}`),
     )
 

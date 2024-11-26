@@ -43,7 +43,7 @@ export const createContentlayerPlugin =
         config.plugins!.push(new ContentlayerWebpackPlugin(pluginOptions))
 
         // NOTE workaround for https://github.com/vercel/next.js/issues/17806#issuecomment-913437792
-        // https://github.com/contentlayerdev/contentlayer/issues/121
+        // https://github.com/content-layer/contentlayer/issues/121
         config.module?.rules?.push({
           test: /\.m?js$/,
           type: 'javascript/auto',

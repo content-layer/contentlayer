@@ -30,16 +30,16 @@ Follow [the tutorial](https://www.contentlayer.dev/docs/getting-started) to get 
 ### Supported Content Sources
 
 - Local content (Markdown, MDX, JSON, YAML)
-- Contentful ([experimental](https://github.com/contentlayerdev/contentlayer/issues/173))
-- Sanity ([considering](https://github.com/contentlayerdev/contentlayer/issues/172))
-- Notion ([considering](https://github.com/contentlayerdev/contentlayer/issues/174))
+- Contentful ([experimental](https://github.com/content-layer/contentlayer/issues/173))
+- Sanity ([considering](https://github.com/content-layer/contentlayer/issues/172))
+- Notion ([considering](https://github.com/content-layer/contentlayer/issues/174))
 
 ### Supported Environments
 
 - Next.js
-- Remix ([considering](https://github.com/contentlayerdev/contentlayer/issues/169))
-- SvelteKit ([considering](https://github.com/contentlayerdev/contentlayer/issues/170))
-- Astro ([considering](https://github.com/contentlayerdev/contentlayer/issues/171))
+- Remix ([considering](https://github.com/content-layer/contentlayer/issues/169))
+- SvelteKit ([considering](https://github.com/content-layer/contentlayer/issues/170))
+- Astro ([considering](https://github.com/content-layer/contentlayer/issues/171))
 
 ### Roadmap
 

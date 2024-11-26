@@ -16,10 +16,10 @@
     "@contentlayer/core": "workspace:*",
     "@contentlayer/utils": "workspace:*",
     "clipanion": "^3.2.1",
-    "typanion": "^3.12.1"
+    "typanion": "^3.14.0"
   },
   "devDependencies": {
-    "@types/node": "^20.3.2"
+    "@types/node": "^22.10.0"
   },
   "license": "MIT"
 }
