@@ -212,7 +212,7 @@ const toFieldDef = ({
           return {
             ...fieldBase,
             type: 'enum',
-            options: field.items.validations![0]!.in,
+            options: field.items.validations![0]!.in as string[],
           }
         } else {
           return {

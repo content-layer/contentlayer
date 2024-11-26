@@ -19,31 +19,46 @@ import { unknownFilePath } from '../file-paths.js'
 export class FileAdded {
   readonly _tag = 'FileAdded'
 
-  constructor(public path: UnknownFilePath, public stats: O.Option<fs.Stats>) {}
+  constructor(
+    public path: UnknownFilePath,
+    public stats: O.Option<fs.Stats>,
+  ) {}
 }
 
 export class FileRemoved {
   readonly _tag = 'FileRemoved'
 
-  constructor(public path: UnknownFilePath, public stats: O.Option<fs.Stats>) {}
+  constructor(
+    public path: UnknownFilePath,
+    public stats: O.Option<fs.Stats>,
+  ) {}
 }
 
 export class FileChanged {
   readonly _tag = 'FileChanged'
 
-  constructor(public path: UnknownFilePath, public stats: O.Option<fs.Stats>) {}
+  constructor(
+    public path: UnknownFilePath,
+    public stats: O.Option<fs.Stats>,
+  ) {}
 }
 
 export class DirectoryAdded {
   readonly _tag = 'DirectoryAdded'
 
-  constructor(public path: UnknownFilePath, public stats: O.Option<fs.Stats>) {}
+  constructor(
+    public path: UnknownFilePath,
+    public stats: O.Option<fs.Stats>,
+  ) {}
 }
 
 export class DirectoryRemoved {
   readonly _tag = 'DirectoryRemoved'
 
-  constructor(public path: UnknownFilePath, public stats: O.Option<fs.Stats>) {}
+  constructor(
+    public path: UnknownFilePath,
+    public stats: O.Option<fs.Stats>,
+  ) {}
 }
 
 export type FileSystemEvent = FileAdded | FileRemoved | FileChanged | DirectoryAdded | DirectoryRemoved
@@ -62,9 +77,9 @@ abstract class FileWatcherInternal extends FileWatcher {
 
   abstract subscribe(): M.Managed<unknown, never, S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>>
 
-  abstract add(paths: readonly string[]): T.UIO<void>
+  abstract add(paths: string[]): T.UIO<void>
 
-  abstract remove(paths: readonly string[]): T.UIO<void>
+  abstract remove(paths: string[]): T.UIO<void>
 }
 
 export const WatchErrorTypeId = Symbol()
@@ -82,8 +97,8 @@ class ConcreteFileWatcher extends FileWatcherInternal {
   constructor(
     public instance: Ref.Ref<Chokidar.FSWatcher>,
     private fsEventsHub: H.Hub<Ex.Exit<never, E.Either<FileWatcherError, FileSystemEvent>>>,
-    public readonly paths: readonly string[] | string,
-    public readonly options?: Chokidar.WatchOptions,
+    public readonly paths: string[] | string,
+    public readonly options?: Chokidar.ChokidarOptions,
   ) {
     super()
   }
@@ -97,7 +112,7 @@ class ConcreteFileWatcher extends FileWatcherInternal {
     )
   }
 
-  add(paths: readonly string[]) {
+  add(paths: string[]) {
     return pipe(
       this.instance,
       Ref.get,
@@ -109,7 +124,7 @@ class ConcreteFileWatcher extends FileWatcherInternal {
     )
   }
 
-  remove(paths: readonly string[]) {
+  remove(paths: string[]) {
     return pipe(
       this.instance,
       Ref.get,
@@ -192,7 +207,7 @@ function concrete(fileWatcher: FileWatcher): asserts fileWatcher is ConcreteFile
   //
 }
 
-export function makeUnsafe(paths: readonly string[] | string, options?: Chokidar.WatchOptions): FileWatcher {
+export function makeUnsafe(paths: string[] | string, options?: Chokidar.ChokidarOptions): FileWatcher {
   const instance = Ref.unsafeMakeRef<Chokidar.FSWatcher>(Chokidar.watch(paths, options))
   const hub = H.unsafeMakeUnbounded<Ex.Exit<never, E.Either<FileWatcherError, FileSystemEvent>>>()
 
@@ -223,8 +238,8 @@ export function makeUnsafe(paths: readonly string[] | string, options?: Chokidar
 
 // export function make(paths: readonly string[] | string, options?: Chokidar.WatchOptions): T.UIO<FileWatcher> {
 export function make(
-  paths: readonly string[] | string,
-  options?: Chokidar.WatchOptions,
+  paths: string[] | string,
+  options?: Chokidar.ChokidarOptions,
 ): T.Effect<unknown, never, FileWatcher> {
   return pipe(
     T.succeedWith(() => Chokidar.watch(paths, options)),
@@ -246,8 +261,8 @@ export function make(
 //   pipe(M.make_(make(paths, options), shutdown), M.chain(subscribe), S.unwrapManaged)
 
 export const makeAndSubscribe = (
-  paths: readonly string[] | string,
-  options?: Chokidar.WatchOptions,
+  paths: string[] | string,
+  options?: Chokidar.ChokidarOptions,
 ): S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>> =>
   pipe(M.make_(make(paths, options), shutdown), M.chain(subscribe), S.unwrapManaged)
 
@@ -259,23 +274,23 @@ export function subscribe(
   return self.subscribe()
 }
 
-export function add_(self: FileWatcher, paths: readonly string[]): T.UIO<void> {
+export function add_(self: FileWatcher, paths: string[]): T.UIO<void> {
   concrete(self)
 
   return self.add(paths)
 }
 
-export function add(paths: readonly string[]) {
+export function add(paths: string[]) {
   return (self: FileWatcher) => add_(self, paths)
 }
 
-export function remove_(self: FileWatcher, paths: readonly string[]): T.UIO<void> {
+export function remove_(self: FileWatcher, paths: string[]): T.UIO<void> {
   concrete(self)
 
   return self.remove(paths)
 }
 
-export function remove(paths: readonly string[]) {
+export function remove(paths: string[]) {
   return (self: FileWatcher) => remove_(self, paths)
 }
 

@@ -150,7 +150,7 @@ export type ImageFieldDef = FieldDefBase & {
 export type EnumFieldDef = FieldDefBase & {
   type: 'enum'
   default: string | undefined
-  options: readonly string[]
+  options: string[]
 }
 
 export type NestedFieldDef = FieldDefBase & {

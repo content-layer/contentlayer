@@ -117,7 +117,7 @@ const fieldDefToStackbitField = ({
       return { ...commonField, type: 'object', fields: [] }
     case 'list':
     case 'list_polymorphic':
-      // @ts-expect-error TODO fix this together with some help from Stackbit
+      // TODO fix this together with some help from Stackbit
       return { ...commonField, type: 'list', items: listFieldDefToStackbitFieldListItems(fieldDef) }
     case 'image':
       return { ...commonField, type: 'string' }

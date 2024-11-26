@@ -30,8 +30,8 @@ export const fetchData = ({
   flags: Flags
   options: core.PluginOptions
   contentDirPath: AbsolutePosixFilePath
-  contentDirInclude: readonly RelativePosixFilePath[]
-  contentDirExclude: readonly RelativePosixFilePath[]
+  contentDirInclude: RelativePosixFilePath[]
+  contentDirExclude: RelativePosixFilePath[]
   /**
    * For example for dynamic content builds, we'd like to do as much as possible in-memory
    * and thus want to skip persisted caching

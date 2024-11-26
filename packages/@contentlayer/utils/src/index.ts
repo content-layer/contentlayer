@@ -81,7 +81,7 @@ export const capitalizeFirstLetter = (str: string): string => str.charAt(0).toUp
  * Use this to make assertion at end of if-else chain that all members of a
  * union have been accounted for.
  */
-export function casesHandled(x: never): never {
+export function casesHandled(x: object): never {
   throw new Error(`A case was not handled for value: ${JSON.stringify(x)}`)
 }
 

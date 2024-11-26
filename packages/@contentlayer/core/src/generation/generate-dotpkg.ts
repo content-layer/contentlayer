@@ -4,7 +4,7 @@ import type { E, HasClock, HasConsole } from '@contentlayer/utils/effect'
 import { Array, Chunk, Either, OT, pipe, S, T } from '@contentlayer/utils/effect'
 import type { GetContentlayerVersionError } from '@contentlayer/utils/node'
 import { getContentlayerVersion } from '@contentlayer/utils/node'
-import { camelCase } from 'camel-case'
+import { camelCase } from 'change-case'
 import type { PackageJson } from 'type-fest'
 
 import { ArtifactsDir } from '../ArtifactsDir.js'
@@ -360,7 +360,8 @@ export { default as ${dataVariableName} } from './${idToFileName(documentId)}.js
     pipe(
       id,
       idToFileName,
-      (_) => camelCase(_, { stripRegexp: /[^A-Z0-9\_]/gi }),
+      // remove Regexp: /[^A-Z0-9\_]/gi from value -  { stripRegexp: /[^A-Z0-9\_]/gi }
+      (_) => camelCase(_, { split: (value) => value.split(/[^A-Z0-9\_]/gi) }),
       // NOTE to support file names with different alphabets, we'll fall back (e.g. to `Docname2`)
       // See https://github.com/content-layer/contentlayer/issues/337
       (_) => (isValidJsVarName(_) && usedVariableNames.has(_) === false ? _ : `${docDef.name}${fileIndex}`),

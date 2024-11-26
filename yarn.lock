@@ -297,7 +297,7 @@ __metadata:
   dependencies:
     "@contentlayer/utils": "workspace:*"
     "@types/source-map-support": ^0.5.10
-    camel-case: ^5.0.0
+    change-case: ^5.4.4
     comment-json: ^4.2.5
     esbuild: 0.24.x
     gray-matter: ^4.0.3
@@ -3358,15 +3358,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"camel-case@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "camel-case@npm:5.0.0"
-  dependencies:
-    no-case: ^4.0.0
-  checksum: f5ea261a1917effc63d608cc30845dd6085011a1bb9ceee2efe0e49ea86d7ebfa8ed15f826d31602506f000ea1c78860a885438ffcdf205b23d1a5d3d678859b
-  languageName: node
-  linkType: hard
-
 "camelcase-css@npm:^2.0.1":
   version: 2.0.1
   resolution: "camelcase-css@npm:2.0.1"
@@ -3434,6 +3425,13 @@ __metadata:
     ansi-styles: ^4.1.0
     supports-color: ^7.1.0
   checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
+  languageName: node
+  linkType: hard
+
+"change-case@npm:^5.4.4":
+  version: 5.4.4
+  resolution: "change-case@npm:5.4.4"
+  checksum: a22a25a763719658424ffbcd41e931d2d19cc22399cc765dca447fbe1eaf13e179d5e8ab1677af75f2e814dbddf74e42ffdecb526cd5bc906cc859f62aa154b2
   languageName: node
   linkType: hard
 
@@ -7592,13 +7590,6 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: 7c37c0fd05c4044fa89dabdac62a81de5300b387411cc9862341f45bd68da180cba7125ef6d2c3961e3409cbf8afd03b6c835cb4a6142c8988b5fc3741e72871
-  languageName: node
-  linkType: hard
-
-"no-case@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "no-case@npm:4.0.0"
-  checksum: cbfd08163260cb6be5451637193332aff4b27ea741944f268c63adc874eb7343b0319714202a9293464b691674e2422eaaa9b851bae87d342d2162438846d585
   languageName: node
   linkType: hard
 
