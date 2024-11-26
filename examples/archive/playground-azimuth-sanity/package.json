@@ -1,0 +1,8 @@
+{
+  "name": "example-azimuth-sanity-monorepo",
+  "private": true,
+  "workspaces": [
+    "./web",
+    "./studio"
+  ]
+}
